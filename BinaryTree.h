@@ -4,7 +4,7 @@
 #include <iostream>
 
 class BinaryTree {
-private:
+protected:
 	class Node {
 	private:
 		Node* m_Right;

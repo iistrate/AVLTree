@@ -4,7 +4,7 @@
 #include <iostream>
 #include <istream>
 
-#include "BinaryTree.h"
+#include "AVL.h"
 
 class App {
 private:
@@ -17,7 +17,7 @@ private:
 		PRINT_PRE_ORDER,
 		PRINT_POST_ORDER
 	};
-	BinaryTree BT;
+	AVL AVLTree;
 public:
 	App(void) : m_running(false), m_userInput(0) {}
 	void quit(void) {

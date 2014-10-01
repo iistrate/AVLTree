@@ -13,22 +13,22 @@ void App::start(void) {
 		case INSERT:
 			std::cout << "Please insert number: ";
 			std::cin >> num;
-			BT.insertNode(num);
+			AVLTree.insertNode(num);
 			std::cout << std::endl;
 			break;
 		case PRINT_IN_ORDER:
 			std::cout << "In Order: ";
-			BT.printIn(BT.getRoot());
+			AVLTree.printIn(AVLTree.getRoot());
 			std::cout << std::endl;
 			break;
 		case PRINT_POST_ORDER:
 			std::cout << "Post Order: ";
-			BT.printPost(BT.getRoot());
+			AVLTree.printPost(AVLTree.getRoot());
 			std::cout << std::endl;
 			break;
 		case PRINT_PRE_ORDER:
 			std::cout << "Pre Order: ";
-			BT.printPre(BT.getRoot());
+			AVLTree.printPre(AVLTree.getRoot());
 			std::cout << std::endl;
 			break;
 		}
