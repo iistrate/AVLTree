@@ -42,6 +42,7 @@ protected:
 		const int getData(void) const {
 			return m_data;
 		}
+		//if negative right is bigger
 		int getBalanceFactor() {
 			return m_lheight - m_rheight;
 		}
