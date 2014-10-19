@@ -1,22 +1,23 @@
 #include "AVL.h"
 
+void AVL::insertNode(int data) {
+	//if empty assign to node
+	if (m_count == 0) {
+		m_Root = new Node(data);
+	}
+	//if more than one node
+	else {
+		insertNode(data, m_Root);
+	}
+	m_count++;
+}
 void AVL::insertNode(int data, Node* NewNode) {
-	int balanceFactor;
 	if (data < NewNode->getData()) {
-		//if left not empty
 		if (NewNode->getLeft() != 0) {
-			balanceFactor = NewNode->getLeft()->getBalanceFactor();
-			// and balance factor is not left biased
-			if (balanceFactor <= 0) {
-				//each subsequent node will have +1 to its left height
-				NewNode->increaseLeftHeight();
-				insertNode(data, NewNode->getLeft());
-			}
-			//send it right
-			else {
-				NewNode->increaseRightHeight();
-				insertNode(data, NewNode->getRight());
-			}
+			//each subsequent node will have +1 to its height
+			NewNode->increaseLeftHeight();
+			//if left not empty keep looking
+			insertNode(data, NewNode->getLeft());
 		}
 		//create left node
 		else {
@@ -26,20 +27,11 @@ void AVL::insertNode(int data, Node* NewNode) {
 		}
 	}
 	else {
-		//if right not empty keep looking
 		if (NewNode->getRight() != 0) {
-			balanceFactor = NewNode->getRight()->getBalanceFactor();
-			//if node's balance factor is not right biased
-			if (balanceFactor <= 0) {
-				//each subsequent node will have +1 to its right height
-				NewNode->increaseRightHeight();
-				insertNode(data, NewNode->getRight());
-			}
-			//send it left
-			else {
-				NewNode->increaseLeftHeight();
-				insertNode(data, NewNode->getLeft());
-			}
+			//each subsequent node will have +1 to its height
+			NewNode->increaseRightHeight();
+			//if right not empty keep looking
+			insertNode(data, NewNode->getRight());
 		}
 		//create right node
 		else {
@@ -48,4 +40,60 @@ void AVL::insertNode(int data, Node* NewNode) {
 			NewNode->increaseRightHeight();
 		}
 	}
+}
+void AVL::checkBalance(Node* node) {
+	int balanceFactor;
+	if (node) {
+		//goleft
+		checkBalance(node->getLeft());
+		//goright
+		checkBalance(node->getRight());
+		//get balance factor
+		balanceFactor = node->getBalanceFactor();
+//test
+//		cout << "Balance factor: " << balanceFactor << " for data: " << node->getData() << endl;
+//end test
+		//if node right heavy
+		if (balanceFactor > 1) {
+			if (node->getRight() != 0) {
+				//if right node left heavy
+				if (node->getRight()->getBalanceFactor() < -1) {
+					//double left
+					leftRotation(node);
+					leftRotation(node);
+				}
+				else {
+					leftRotation(node);
+				}
+			}
+		}
+		//if node left heavy
+		else if (balanceFactor < -1) {
+			if (node->getLeft() != 0) {
+				//if left node is right heavy
+				if (node->getLeft()->getBalanceFactor() > 1) {
+					//double right
+					rightRotation(node);
+					rightRotation(node);
+				}
+				else {
+					rightRotation(node);
+				}
+			}
+		}
+	}
+
+}
+void AVL::leftRotation(Node* node) {
+//test
+//	cout << "Rotate left at node: " << node->getData() << endl;
+//end test
+
+
+
+}
+void AVL::rightRotation(Node* node) {
+//test
+//	cout << "Rotate right at node: " << node->getData() << endl;
+//end test
 }

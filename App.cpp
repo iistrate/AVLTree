@@ -17,6 +17,7 @@ void App::start(void) {
 			cout << "Please insert number: ";
 			cin >> num;
 			AVLTree.insertNode(num);
+			AVLTree.checkBalance(AVLTree.getRoot());
 			cout << endl;
 			break;
 		case PRINT_IN_ORDER:
@@ -48,18 +49,18 @@ void App::start(void) {
 			m_running = false;
 			break;
 		}
-		//test	
-		if (AVLTree.getRoot()) {
-			cout << "LeftH: " << AVLTree.getRoot()->getLeftHeight() << endl;
-			cout << "RightH: " << AVLTree.getRoot()->getRightHeight() << endl;
-			cout << "Balance Factor: " << AVLTree.getRoot()->getBalanceFactor() << endl;
-		}
-		else {
-			cout << "No nodes inserted, nothing to show." << endl;
-		}
+//test	
+		//if (AVLTree.getRoot()) {
+		//	cout << "LeftH: " << AVLTree.getRoot()->getLeftHeight() << endl;
+		//	cout << "RightH: " << AVLTree.getRoot()->getRightHeight() << endl;
+		//	cout << "Balance Factor: " << AVLTree.getRoot()->getBalanceFactor() << endl;
+		//}
+		//else {
+		//	cout << "No nodes inserted, nothing to show." << endl;
+		//}
 		//		cout << "Count: " << AVLTree.getCount() << endl;
-		//end test
 		system("pause");
 		system("cls");
+//end test
 	} while (m_running);
 }

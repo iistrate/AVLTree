@@ -4,6 +4,7 @@
 #include <iostream>
 
 using std::cout;
+using std::endl;
 
 class BinaryTree {
 protected:
@@ -26,10 +27,10 @@ protected:
 		void setLeft(Node* Left) {
 			m_Left = Left;
 		}
-		void increaseRightHeight() {
+		void increaseRightHeight(void) {
 			m_rheight++;
 		}
-		void increaseLeftHeight() {
+		void increaseLeftHeight(void) {
 			m_lheight++;
 		}
 
@@ -43,17 +44,17 @@ protected:
 			return m_data;
 		}
 		//if negative right is bigger
-		int getBalanceFactor() {
-			return m_lheight - m_rheight;
+		int getBalanceFactor(void) {
+			return m_rheight - m_lheight;
 		}
 		//get max height
-		int getHeight() {
+		int getHeight(void) {
 			return m_lheight > m_rheight ? m_lheight : m_rheight;
 		}
-		int getRightHeight() {
+		int getRightHeight(void) {
 			return m_rheight;
 		}
-		int getLeftHeight() {
+		int getLeftHeight(void) {
 			return m_lheight;
 		}
 	}; // end Node class
