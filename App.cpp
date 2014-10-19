@@ -1,36 +1,65 @@
 #include "App.h"
 
+using std::cout;
+using std::endl;
+using std::cin;
 
 void App::start(void) {
 	m_running = true;
 	int num = 0;
 
 	do {
-		std::cout << "Please enter 1 to insert node; 2 for in order; 3 for pre order; 4 for post order: ";
-		std::cin >> m_userInput;
+		cout << "1-Insert\n2-In\n3-Pre\n4-Post\n5-Balance Factor: ";
+		cin >> m_userInput;
 		switch (m_userInput)
 		{
 		case INSERT:
-			std::cout << "Please insert number: ";
-			std::cin >> num;
+			cout << "Please insert number: ";
+			cin >> num;
 			AVLTree.insertNode(num);
-			std::cout << std::endl;
+			cout << endl;
 			break;
 		case PRINT_IN_ORDER:
-			std::cout << "In Order: ";
+			cout << "In Order: ";
 			AVLTree.printIn(AVLTree.getRoot());
-			std::cout << std::endl;
+			cout << endl;
 			break;
 		case PRINT_POST_ORDER:
-			std::cout << "Post Order: ";
+			cout << "Post Order: ";
 			AVLTree.printPost(AVLTree.getRoot());
-			std::cout << std::endl;
+			cout << endl;
 			break;
 		case PRINT_PRE_ORDER:
-			std::cout << "Pre Order: ";
+			cout << "Pre Order: ";
 			AVLTree.printPre(AVLTree.getRoot());
-			std::cout << std::endl;
+			cout << endl;
+			break;
+		case BALANCE_FACTOR:
+			if (AVLTree.getRoot()) {
+				cout << "LeftH: " << AVLTree.getRoot()->getLeftHeight() << endl;
+				cout << "RightH: " << AVLTree.getRoot()->getRightHeight() << endl;
+				cout << "Balance Factor: " << AVLTree.getRoot()->getBalanceFactor() << endl;
+			}
+			else {
+				cout << "No nodes inserted, nothing to show." << endl;
+			}
+			break;
+		default:
+			m_running = false;
 			break;
 		}
+		//test	
+		if (AVLTree.getRoot()) {
+			cout << "LeftH: " << AVLTree.getRoot()->getLeftHeight() << endl;
+			cout << "RightH: " << AVLTree.getRoot()->getRightHeight() << endl;
+			cout << "Balance Factor: " << AVLTree.getRoot()->getBalanceFactor() << endl;
+		}
+		else {
+			cout << "No nodes inserted, nothing to show." << endl;
+		}
+		//		cout << "Count: " << AVLTree.getCount() << endl;
+		//end test
+		system("pause");
+		system("cls");
 	} while (m_running);
 }

@@ -15,11 +15,14 @@ private:
 		INSERT = 1,
 		PRINT_IN_ORDER,
 		PRINT_PRE_ORDER,
-		PRINT_POST_ORDER
+		PRINT_POST_ORDER,
+		BALANCE_FACTOR
 	};
+
 	AVL AVLTree;
 public:
 	App(void) : m_running(false), m_userInput(0) {}
+
 	void quit(void) {
 		m_running = false;
 	}
