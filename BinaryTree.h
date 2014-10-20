@@ -33,6 +33,12 @@ protected:
 		void increaseLeftHeight(void) {
 			m_lheight++;
 		}
+		void decreaseRightHeight(void) {
+			m_rheight--;
+		}
+		void decreaseLeftHeight(void) {
+			m_lheight--;
+		}
 
 		Node* getRight(void) {
 			return m_Right;

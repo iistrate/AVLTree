@@ -82,18 +82,37 @@ void AVL::checkBalance(Node* node) {
 			}
 		}
 	}
-
 }
 void AVL::leftRotation(Node* node) {
 //test
-//	cout << "Rotate left at node: " << node->getData() << endl;
+	cout << "Rotate left at node: " << node->getData() << endl;
 //end test
+	//rebalance node
+	node->decreaseRightHeight();
 
+	Node* temp = node;
+	Node* right = node->getRight();
+	temp->setRight(0);
 
-
+	node = right;
+	node->setLeft(temp);
+	setRoot(node);
+//test
+//	cout << node->getLeft()->getData() << " " << node->getRight()->getData();
+//end
 }
 void AVL::rightRotation(Node* node) {
 //test
-//	cout << "Rotate right at node: " << node->getData() << endl;
+	cout << "Rotate right at node: " << node->getData() << endl;
 //end test
+	//rebalance
+	node->decreaseRightHeight();
+
+	Node* temp = node;
+	Node* left = node->getLeft();
+	temp->setLeft(0);
+
+	node = left;
+	node->setRight(temp);
+	setRoot(node);
 }

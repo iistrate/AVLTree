@@ -7,7 +7,7 @@ using std::cin;
 void App::start(void) {
 	m_running = true;
 	int num = 0;
-
+	
 	do {
 		cout << "1-Insert\n2-In\n3-Pre\n4-Post\n5-Balance Factor: ";
 		cin >> m_userInput;
@@ -18,6 +18,7 @@ void App::start(void) {
 			cin >> num;
 			AVLTree.insertNode(num);
 			AVLTree.checkBalance(AVLTree.getRoot());
+			AVLTree.printIn(AVLTree.getRoot());
 			cout << endl;
 			break;
 		case PRINT_IN_ORDER:
