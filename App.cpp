@@ -9,7 +9,7 @@ void App::start(void) {
 	int num = 0;
 	
 	do {
-		cout << "1-Insert\n2-In\n3-Pre\n4-Post\n5-Balance Factor: ";
+		cout << "0-Exit\n1-Insert\n2-In\n3-Pre\n4-Post\n5-Balance Factor: ";
 		cin >> m_userInput;
 		switch (m_userInput)
 		{

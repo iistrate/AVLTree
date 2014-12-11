@@ -12,6 +12,7 @@ protected:
 	private:
 		Node* m_Right;
 		Node* m_Left;
+
 		const int m_data;
 		int m_lheight;
 		int m_rheight;

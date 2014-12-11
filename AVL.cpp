@@ -89,16 +89,27 @@ void AVL::leftRotation(Node* node) {
 //end test
 	//rebalance node
 	node->decreaseRightHeight();
-
-	Node* temp = node;
+	
+	//get right
 	Node* right = node->getRight();
-	temp->setRight(0);
+	//connect right to left
+	right->setLeft(node);
+	//disconnect rotation node
+	node->setRight(0);
+	
+	if (node == m_Root) {
+		setRoot(right);
+	}
 
-	node = right;
-	node->setLeft(temp);
-	setRoot(node);
 //test
-//	cout << node->getLeft()->getData() << " " << node->getRight()->getData();
+	//Node* testLeft = node->getLeft();
+	//if (testLeft) {
+	//	cout << testLeft->getData();
+	//}
+	//Node* testRight = node->getRight();
+	//if (testRight) {
+	//	cout << node->getRight()->getData() << endl;
+	//}
 //end
 }
 void AVL::rightRotation(Node* node) {
@@ -108,11 +119,14 @@ void AVL::rightRotation(Node* node) {
 	//rebalance
 	node->decreaseRightHeight();
 
-	Node* temp = node;
+	//get left
 	Node* left = node->getLeft();
-	temp->setLeft(0);
+	//connect left to right
+	left->setRight(node);
+	//disconnect rotation node
+	node->setLeft(0);
 
-	node = left;
-	node->setRight(temp);
-	setRoot(node);
+	if (node == m_Root) {
+		setRoot(left);
+	}
 }
